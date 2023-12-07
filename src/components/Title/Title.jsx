@@ -1,12 +1,17 @@
-import styles from "./Title.module.css"
+import styles from "./Title.module.css";
 
-const Title = ({text,iconName}) => {
-    const imgUrl = new URL (`/src/assets/icon-${iconName}.svg`,import.meta.url).href
+const Title = ({ text, iconName }) => {
+  const imgUrl = new URL(`/src/assets/icon-${iconName}.svg`, import.meta.url)
+    .href;
   return (
-    <div>
-<img src={imgUrl} alt="" />
-    </div>
-  )
-}
+    <div className={styles.container}>
+      <div className={styles.icon}>
+      <img src={imgUrl} alt="" />
 
-export default Title
+      </div>
+      <h2 className={styles.title}>{text}</h2>
+    </div>
+  );
+};
+
+export default Title;

@@ -1,16 +1,17 @@
+import "./App.css"
+import Header from "./components/Header/Header";
+import CreatNewTask from "./components/CreatNewTask/CreatNewTask";
 
-import React from 'react'
-import Header from './components/Header/Header'
-import CreatNewTask from './components/CreatNewTask/CreatNewTask'
 
 const App = () => {
   return (
-    <>
-    <Header/>
-    <CreatNewTask/>
+    <div className="container">
+      <Header />
+      <section className="content">
+        <CreatNewTask />
+      </section>
+    </div>
+  );
+};
 
-    </>
-  )
-}
-
-export default App
+export default App;
