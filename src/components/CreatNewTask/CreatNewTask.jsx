@@ -1,22 +1,27 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Title from "../Title/Title";
 import styles from "./CreatNewTask.module.css";
 
-import addIcon from "../../assets/icon-add.svg"
+import addIcon from "../../assets/icon-add.svg";
+import { AppContext } from "../../AppContent";
 
 const CreatNewTask = () => {
-  const [inputValue,setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("");
+  const [error, setError] = useState(false);
+  const { handleAddTask } = useContext(AppContext);
+
   const handleSubmit = (e) => {
-
     e.preventDefault();
-    if(inputValue.length){
+    if (inputValue.length) {
+      handleAddTask(inputValue);
 
-      setInputValue("")
-    }
+      setInputValue("");
+    } else setError(true);
   };
   const handleChange = (e) => {
-setInputValue(e.target.value)
-  }
+    if (error) setError(false);
+    setInputValue(e.target.value);
+  };
   return (
     <div className={styles.container}>
       <Title iconName={"pencil"} text={"Criar nova tarfa"} />
@@ -32,9 +37,8 @@ setInputValue(e.target.value)
         />
 
         <button className={styles.addButton} type="submit">
-<img src={addIcon} alt="adicinar tarefa" />
+          <img src={addIcon} alt="adicinar tarefa" />
         </button>
-        
       </form>
     </div>
   );
